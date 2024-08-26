@@ -2,7 +2,7 @@
 
 This is a Gymnasium (OpenAI Gym) environment designed to train reinforcement learning (RL) agents to control a sailboat. The environment simulates the dynamics of a sailboat and allows the agent to learn tacking behavior to reach a target point.
 
-![env](img/env.gif)
+![env_gif](https://github.com/Gabo-Tor/gym-sailing/blob/main/img/env.gif)
 
 ## Environments
 
@@ -34,11 +34,11 @@ env = gym.make("Sailboat-v0", render_mode="human")
 observation, info = env.reset(seed=42)
 
 for _ in range(1000):
-   action = env.action_space.sample()  # this is where you would insert your policy
-   observation, reward, terminated, truncated, info = env.step(action)
+    action = env.action_space.sample()  # this is where you would insert your policy
+    observation, reward, terminated, truncated, info = env.step(action)
 
-   if terminated or truncated:
-      observation, info = env.reset()
+    if terminated or truncated:
+        observation, info = env.reset()
 
 env.close()
 ```
@@ -49,6 +49,7 @@ To train an RL agent using stable-baselines3:
 
 ```python
 from stable_baselines3 import PPO
+import gymnasium as gym
 import gym_sailing
 
 env = gym.make("Sailboat-v0")
@@ -102,7 +103,7 @@ The default reward function includes:
 
 Benchmarks using stable-baselines3 with default hyperparameters:
 
-![benchmark](img/benchmarks.png)
+![benchmarks](https://github.com/Gabo-Tor/gym-sailing/blob/main/img/benchmarks.png)
 
 ## Contributing
 
