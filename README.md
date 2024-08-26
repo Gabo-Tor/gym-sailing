@@ -120,4 +120,4 @@ Here are some features I'd like to add in the future:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Gabo-Tor/gym-sailing/raw/main/LICENSE) file for details.
