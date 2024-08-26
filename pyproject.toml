@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gym-sailing"
+version = "0.2"
+authors = [
+  { name="Gabriel Torre", email="g-torre@hotmail.com" },
+]
+description = "A sailing environment for OpenAI Gym / Gymnasium"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+keywords = ["reinforcement learning", "gymnasium", "gym", "sailing"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "gymnasium>=0.26",
+    "pygame",
+    "numpy"
+]
+
+[project.urls]
+Homepage = "https://github.con/Gabo-Tor/gym-sailing"
+Issues = "https://github.com/Gabo-Tor/gym-sailing/issues"
+Repository = "https://github.com/Gabo-Tor/gym-sailing"
+Documentation = "https://github.com/Gabo-Tor/gym-sailing/blob/main/README.md"
