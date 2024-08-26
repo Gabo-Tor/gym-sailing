@@ -25,7 +25,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.con/Gabo-Tor/gym-sailing"
+Homepage = "https://github.com/Gabo-Tor/gym-sailing"
 Issues = "https://github.com/Gabo-Tor/gym-sailing/issues"
 Repository = "https://github.com/Gabo-Tor/gym-sailing"
 Documentation = "https://github.com/Gabo-Tor/gym-sailing/blob/main/README.md"
