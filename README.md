@@ -1,26 +1,24 @@
 # gym-sailing
 
----
-
 This is a Gymnasium (OpenAI Gym) environment designed to train reinforcement learning (RL) agents to control a sailboat. The environment simulates the dynamics of a sailboat and allows the agent to learn tacking behavior to reach a target point.
 
 ![env](img/env.gif)
 
-## Envs
+## Environments
 
 - **Sailboat-v0**: The main environment with a continuous action space.
 - **SailboatDiscrete-v0**: A variation of the environment with a discrete action space.
-- **Motorboat-v0**: A easy test environment with a motorboat instead of a sailboat.
+- **Motorboat-v0**: An easy test environment with a motorboat instead of a sailboat.
 
 ## Installation
 
-You can install the latest release using pip by:
+You can install the latest release using pip:
 
 ```bash
 pip install gym-sailing
 ```
 
-Or, if you know what you are doing you can clone and intall locally from the repository.
+Alternatively, if you prefer, you can clone the repository and install it locally.
 
 ## Usage
 
@@ -51,20 +49,21 @@ To train an RL agent using stable-baselines3:
 
 ```python
 from stable_baselines3 import PPO
+import gym_sailing
 
-
-# Initialize the agent
+env = gym.make("Sailboat-v0")
 model = PPO('MlpPolicy', env, verbose=1)
 
 # Train the agent
-model.learn(total_timesteps=100000)
+model.learn(total_timesteps=1_000_000)
 
 # Test the trained model
-obs = env.reset()
+observation, info = env.reset()
 for _ in range(1000):
-    action, _states = model.predict(obs)
-    obs, reward, done, info = env.step(action)
-    env.render()
+    action, _ = model.predict(observation)
+    observation, reward, terminated, truncated, info = env.step(action)
+
+env.close()
 ```
 
 ## Environment Details
@@ -74,7 +73,7 @@ for _ in range(1000):
 The observation space includes:
 
 - **Boat Speed:** The current speed of the boat.
-- **Boat Heading:** The angle of the boat relative to the wind, -$\pi$ to $\pi$.
+- **Boat Heading:** The angle of the boat relative to the wind, ranging from -$\pi$ to $\pi$.
 - **Heading Rate:** The rate of change of the boat's heading.
 - **Course to Target:** The angle between the boat's heading and the target, -$\pi$ to $\pi$.
 - **Distance to Target:** The normalized distance between the boat and the target.
@@ -83,7 +82,7 @@ The observation space includes:
 
 The action space consists of:
 
-- **Rudder Angle:** The angle of the rudder, -1 to 1 for *Sailboat-v0*, *Motorboat-v0* and {-1, 0, 1} for *SailboatDiscrete-v0*.
+- **Rudder Angle:** The angle of the rudder, ranging from -1 to 1 for *Sailboat-v0* and *Motorboat-v0*, and {-1, 0, 1} for *SailboatDiscrete-v0*.
 
 ### Reward
 
@@ -92,7 +91,7 @@ The default reward function includes:
 - **Alive Penalty:** A penalty for each time step to encourage the agent to reach the target quickly.
 - **Target Reward:** A reward for reaching the target.
 - **Course Reward:** A penalty for leaving the course area.
-- **Progress Reward:** A reward for making progress towards the target, using L8 norm, to encourage the agent to move upwind.
+- **Progress Reward:** A reward for making progress towards the target, using the L8 norm, to encourage the agent to move upwind.
 
 ### Episode End
 
@@ -101,22 +100,22 @@ The default reward function includes:
 
 ## Benchmarks
 
-Benchmarks using stable-baselines3 with default hyperparameters
+Benchmarks using stable-baselines3 with default hyperparameters:
 
 ![benchmark](img/benchmarks.png)
 
 ## Contributing
 
-Contributions are welcome, please fork the repository and submit a pull request with your changes. For any questions or suggestions, feel free to open an issue.
+Contributions are welcome. Please fork the repository and submit a pull request with your changes. For any questions or suggestions, feel free to open an issue.
 
 ## Future Work
 
-This is a list of features that I would like to add in the future:
+Here are some features I'd like to add in the future:
 
 - Add currents of different intensities and directions.
 - Add wind shifts.
 - Add wind gusts and lulls.
-- Make the polar diagram more accurate, using the ones from this paper: *R. Binns, F. W. Bethwaite, and N. R. Saunders, “Development of A More Realistic Sailing Simulator,” High Performance Yacht Design Conference. RINA, pp. 243–250, Dec. 04, 2002. doi: 10.3940/rina.ya.2002.29.*
+- Make the polar diagram more accurate, using the data from this paper: *R. Binns, F. W. Bethwaite, and N. R. Saunders, “Development of A More Realistic Sailing Simulator,” High Performance Yacht Design Conference. RINA, pp. 243–250, Dec. 04, 2002. doi: 10.3940/rina.ya.2002.29.*
 
 ## License
 
