@@ -1,7 +1,5 @@
 # gym-sailing: A sailing environment for OpenAI Gym / Gymnasium
 
----
-
 This is a Gymnasium (OpenAI Gym) environment designed to train reinforcement learning (RL) agents to control a sailboat. The environment simulates the dynamics of a sailboat and allows the agent to learn tacking behavior to reach a target point.
 
 ![sailboat gif](https://github.com/Gabo-Tor/gym-sailing/raw/main/img/env.gif?raw=True "sailboat")
