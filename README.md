@@ -103,7 +103,7 @@ The default reward function includes:
 
 ## Benchmarks
 
-Benchmarks using stable-baselines3 with default hyperparameters. Good policies that tack only once tend to achieve ~390 total reward for the sailboat environment. PPO seems to perform better, but SAC is also a good option, that even converging faster.
+Benchmarks using stable-baselines3 with default hyperparameters. Good policies that tack only once tend to achieve ~390 total reward for the sailboat environment. PPO seems to perform better, but SAC is also a good option, even converging faster.
 
 ![benchmarks](https://github.com/Gabo-Tor/gym-sailing/raw/main/img/benchmarks.png?raw=True "benchmarks")
 
