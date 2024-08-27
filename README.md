@@ -1,4 +1,6 @@
-# gym-sailing
+# gym-sailing: A sailing environment for OpenAI Gym / Gymnasium
+
+---
 
 This is a Gymnasium (OpenAI Gym) environment designed to train reinforcement learning (RL) agents to control a sailboat. The environment simulates the dynamics of a sailboat and allows the agent to learn tacking behavior to reach a target point.
 
@@ -6,9 +8,11 @@ This is a Gymnasium (OpenAI Gym) environment designed to train reinforcement lea
 
 ## Environments
 
-- **Sailboat-v0**: The main environment with a continuous action space.
-- **SailboatDiscrete-v0**: A variation of the environment with a discrete action space.
-- **Motorboat-v0**: An easy test environment with a motorboat instead of a sailboat.
+| Environment | Description |
+| --- | --- |
+| **Sailboat-v0** | The main environment with a continuous action space. |
+| **SailboatDiscrete-v0** | A variation of the environment with a discrete action space. |
+| **Motorboat-v0** | An easy test environment with a motorboat instead of a sailboat. |
 
 ## Installation
 
@@ -76,7 +80,7 @@ The observation space includes:
 - **Boat Speed:** The current speed of the boat.
 - **Boat Heading:** The angle of the boat relative to the wind, ranging from -$\pi$ to $\pi$.
 - **Heading Rate:** The rate of change of the boat's heading.
-- **Course to Target:** The angle between the boat's heading and the target, -$\pi$ to $\pi$.
+- **Course to Target:** The angle between the boat's heading and the target, ranging from -$\pi$ to $\pi$.
 - **Distance to Target:** The normalized distance between the boat and the target.
 
 ### Action Space
@@ -91,7 +95,7 @@ The default reward function includes:
 
 - **Alive Penalty:** A penalty for each time step to encourage the agent to reach the target quickly.
 - **Target Reward:** A reward for reaching the target.
-- **Course Reward:** A penalty for leaving the course area.
+- **Course Penalty:** A penalty for leaving the course area.
 - **Progress Reward:** A reward for making progress towards the target, using the L8 norm, to encourage the agent to move upwind.
 
 ### Episode End
@@ -101,7 +105,7 @@ The default reward function includes:
 
 ## Benchmarks
 
-Benchmarks using stable-baselines3 with default hyperparameters:
+Benchmarks using stable-baselines3 with default hyperparameters. Good policies that tack only once tend to achieve ~390 total reward for the sailboat environment. PPO seems to perform better, but SAC is also a good option, that even converging faster.
 
 ![benchmarks](https://github.com/Gabo-Tor/gym-sailing/raw/main/img/benchmarks.png?raw=True "benchmarks")
 
@@ -117,6 +121,10 @@ Here are some features I'd like to add in the future:
 - Add wind shifts.
 - Add wind gusts and lulls.
 - Make the polar diagram more accurate, using the data from this paper: *R. Binns, F. W. Bethwaite, and N. R. Saunders, “Development of A More Realistic Sailing Simulator,” High Performance Yacht Design Conference. RINA, pp. 243–250, Dec. 04, 2002. doi: 10.3940/rina.ya.2002.29.*
+
+## Inspiration
+
+This project was inspired by this fork: https://github.com/openai/gym/compare/master...JonAsbury:gym:Sailing-Simulator-Env
 
 ## License
 
